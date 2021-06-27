@@ -65,7 +65,11 @@ class Visualizer(object):
         for mesh in pred_mesh_list:
             verts = mesh['vertices']
             faces = mesh['faces']
-            rend_img = self.renderer.render(verts, faces, rend_img)
+            # Adding textures
+            verts_text = mesh['vertices_texture']
+            faces_text = mesh['faces_texture']
+            text = mesh['texture']
+            rend_img = self.renderer.render(verts, faces, verts_text, faces_text, text, rend_img)
 
         res_img = rend_img[:h, :w, :]
         return res_img
